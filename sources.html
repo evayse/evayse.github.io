@@ -1,0 +1,1428 @@
+<!DOCTYPE html>
+<!--
+	Interphase by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html lang="fr">
+
+<!-- PARTIE HEAD -->
+	<head>
+		<title>Quel arrondissement est fait pour toi ?</title>
+		
+
+		<meta http-equiv="content-type" content="text/html" charset=iso-8859-1" />
+		<meta name="description" content="Indicateurs nutritionnels des produits de la grande distribution" />
+		<meta name="keywords" content="" />
+        
+	      
+        <link rel="stylesheet" href="css/skel.css" />
+	<link rel="stylesheet" href="css/style.css" />
+	<link rel="stylesheet" href="css/style-xlarge.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.1/nv.d3.css">
+        <link rel="stylesheet" href="css/eUGsj.all.css">
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/bootstrap-theme.css">
+        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+        
+       
+        <!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+        <!--[if lt IE 9]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+            <script src="js/json2.min.js"></script>
+            <script type="text/javascript">
+            window.__ltie9 = true;
+            </script>
+        <![endif]-->
+        
+	<script src="js/jquery.min.js"></script>
+	<script src="js/skel.min.js"></script>
+	<script src="js/skel-layers.min.js"></script>
+	<script src="js/init.js"></script>
+        <script src="js/json2.min.js"></script>
+        <script src="js/bootstrap.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/npm.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.15/d3.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.3.0/lodash.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.1/nv.d3.min.js"></script>
+        <script src="js/bar-chart-1a3f0242ee9d13cef39ccd24a306b422.min.js"></script>
+        <script src="js/chart-753c771b6f0ebc215cab76b0fca5e03aab20b743.min.js"></script>
+        <script src="js/default-5baee189e1a2f0bf680f4910cc958098.min.js"></script>
+        <script src="js/scripts.js"></script>				
+        <script type='text/javascript'>
+
+        function autoSize(iframe){
+	       var body = iframe.contentWindow.document.body;
+	       var frameHeight = body.scrollHeight;
+           var AccordionWidth = document.getElementById('accordion').offsetWidth;
+	       iframe.height = "150px";
+	       iframe.width = AccordionWidth;
+        }
+        </script>
+	</head>
+
+
+<!-- PARTIE BODY-->
+	<body>
+
+
+	<!-- En-tête : les boutons en haut à droite -->
+			<header id="header">
+				<h1><a href="#description">Description</a></h1>
+				<nav id="nav">                   
+					<ul >
+						<li><a href="index.html">Accueil</a></li>       
+						<li><a href="sources.html">Sources</a></li>
+						<li><a href="about.html">Méthodologie </a></li>
+                        
+					</ul>
+				</nav>
+			</header>
+
+	<!-- Main 
+
+		<section id="two" class="wrapper style3 align-center">
+			<div class="container">
+					<header class="major">
+						<h2>Sources</h2>
+						<p> </p>
+					</header>
+				<div class="row">
+					<section class="feature 6u 12u$(small)">
+                            			<p> </p>
+					</section>
+				
+					<section class="feature 6u$ 12u$(small)">
+		                        	<h3 class="title">Titre</h3>
+						<p></p>
+					</section>
+						
+				</div>
+			</div>
+                  </section> -->
+
+        <!-- CARTE-->
+			<section class="wrapper style4 align-center">
+
+
+				<h2>Curieux de comparer les différents arrondissements ?</h2>
+					<div class="wrapper style4 align-center" style="display: flex;justify-content: center;
+">
+  
+					<ul class="nav nav-pills align-center">
+  
+						<li class="active"><a class="btn button big" style="padding-top: 0px;" data-toggle="tab" onclick="affichageCarteParQuestion(1)">Régime alimentaire</a>
+</li>
+						<li><a class="btn button big" style="padding-top: 0px;" data-toggle="tab" onclick="affichageCarteParQuestion(2)">Sport</a>
+</li>
+						<li><a class="btn button big" style="padding-top: 0px;" data-toggle="tab" onclick="affichageCarteParQuestion(3)">Après-midis</a></li>
+						<li><a class="btn button big" style="padding-top: 0px;" data-toggle="tab" onclick="affichageCarteParQuestion(4)">Soirées</a>
+</li>
+						<li><a class="btn button big" style="padding-top: 0px;" data-toggle="tab" onclick="affichageCarteParQuestion(5)">Accessoire</a></li>							</ul>
+					</div>
+
+			<!-- <div class="clearfix"></div> -->
+
+	<div class="container">
+  	<div class="col-lg-2"> 
+	<div id="sidebar">
+		<div id="sidebar1" class="pull-left">		
+			<div class="item">	   
+				<a class="pull-left img-rounded" id="modalite1" onclick="affichageCarteParQuestionModalite(1,1)"></a>
+			    	<h5 class="sliding-title pull-right" style="display: none;">T-rex</h5>
+			</div>		
+
+			<div class="item">
+			    	<a class="pull-left img-rounded" id="modalite2" onclick="affichageCarteParQuestionModalite(1,2)">
+					<i class="icon icon-glass icon-2x clearfix"></i></a>
+	    			<h5 class="sliding-title pull-right" style="display: none;">Fish-addict<i class="icon icon-info-sign muted the-info"></i></h5>
+			</div>
+
+			<div class="item">
+			    	<a class="pull-left img-rounded" id="modalite3" onclick="affichageCarteParQuestionModalite(1,3)">
+					<i class="icon icon-glass icon-2x clearfix"></i></a>
+	    			<h5 class="sliding-title pull-right" style="display: none;">Fast-food<i class="icon icon-info-sign muted the-info"></i></h5>
+			</div>
+
+			<div class="item">
+			    	<a class="pull-left img-rounded" id="modalite4" onclick="affichageCarteParQuestionModalite(1,4)">
+					<i class="icon icon-glass icon-2x clearfix"></i></a>
+	    			<h5 class="sliding-title pull-right" style="display: none;">Du sucre<i class="icon icon-info-sign muted the-info"></i></h5>
+			</div>
+
+			<input type="hidden" class="modalite1">
+			<input type="hidden" class="modalite2">
+			<input type="hidden" class="modalite3">
+			<input type="hidden" class="modalite4">	
+		</div>
+
+		<div id="sidebar2" class="pull-left">		
+			<div class="item">	   
+				<a class="pull-left img-rounded" id="modalite1" onclick="affichageCarteParQuestionModalite(2,1)">
+					<i class="icon icon-glass icon-2x clearfix"></i></a>
+	    			<h5 class="sliding-title pull-right" style="display: none;">Schwarzy<i class="icon icon-info-sign muted the-info"></i></h5>
+			</div>		
+			<div class="item">
+			    	<a class="pull-left img-rounded" id="modalite2" onclick="affichageCarteParQuestionModalite(2,2)">
+					<i class="icon icon-glass icon-2x clearfix"></i></a>
+	    			<h5 class="sliding-title pull-right" style="display: none;">Foot<i class="icon icon-info-sign muted the-info"></i></h5>
+			</div>
+			<div class="item">
+			    	<a class="pull-left img-rounded" id="modalite3" onclick="affichageCarteParQuestionModalite(2,3)">
+					<i class="icon icon-glass icon-2x clearfix"></i></a>
+	    			<h5 class="sliding-title pull-right" style="display: none;">Tennis<i class="icon icon-info-sign muted the-info"></i></h5>
+			</div>
+			<div class="item">
+			    	<a class="pull-left img-rounded" id="modalite4" onclick="affichageCarteParQuestionModalite(2,4)">
+					<i class="icon icon-glass icon-2x clearfix"></i></a>
+	    			<h5 class="sliding-title pull-right" style="display: none;">Pétanque<i class="icon icon-info-sign muted the-info"></i></h5>
+			</div>
+
+			<input type="hidden" class="modalite1">
+			<input type="hidden" class="modalite2">
+			<input type="hidden" class="modalite3">
+			<input type="hidden" class="modalite4">
+
+		</div>
+
+		<div id="sidebar3" class="pull-left">		
+			<div class="item">	   
+				<a class="pull-left img-rounded" id="modalite1" onclick="affichageCarteParQuestionModalite(3,1)">
+					<i class="icon icon-glass icon-2x clearfix"></i></a>
+			    	<h5 class="sliding-title-active pull-right" style="display: block;">Parcs</h5>
+			</div>		
+
+			<div class="item">
+			    	<a class="pull-left img-rounded" id="modalite2" onclick="affichageCarteParQuestionModalite(3,2)">
+					<i class="icon icon-glass icon-2x clearfix"></i></a>
+	    			<h5 class="sliding-title pull-right" style="display: none;">Musées<i class="icon icon-info-sign muted the-info"></i></h5>
+			</div>
+
+			<div class="item">
+			    	<a class="pull-left img-rounded" id="modalite3" onclick="affichageCarteParQuestionModalite(3,3)">
+					<i class="icon icon-glass icon-2x clearfix"></i></a>
+	    			<h5 class="sliding-title pull-right" style="display: none;">Bibliothèques<i class="icon icon-info-sign muted the-info"></i></h5>
+			</div>
+
+			<div class="item">
+			    	<a class="pull-left img-rounded" id="modalite4" onclick="affichageCarteParQuestionModalite(3,4)">
+					<i class="icon icon-glass icon-2x clearfix"></i></a>
+	    			<h5 class="sliding-title pull-right" style="display: none;">Terrasses<i class="icon icon-info-sign muted the-info"></i></h5>
+			</div>
+
+			<input type="hidden" class="modalite1">
+			<input type="hidden" class="modalite2">
+			<input type="hidden" class="modalite3">
+			<input type="hidden" class="modalite4">
+
+		</div>
+
+		<div id="sidebar4" class="pull-left">		
+			<div class="item">	   
+				<a class="pull-left img-rounded" id="modalite1" onclick="affichageCarteParQuestionModalite(4,1)">
+					<i class="icon icon-glass icon-2x clearfix"></i></a>
+		    		<h5 class="sliding-title-active pull-right" style="display: block;">Tranquille chez toi</h5>
+			</div>		
+
+			<div class="item">
+			    	<a class="pull-left img-rounded" id="modalite2" onclick="affichageCarteParQuestionModalite(4,2)">
+					<i class="icon icon-glass icon-2x clearfix"></i></a>
+	    			<h5 class="sliding-title pull-right" style="display: none;">Bars<i class="icon icon-info-sign muted the-info"></i></h5>
+			</div>
+
+			<div class="item">
+			    	<a class="pull-left img-rounded" id="modalite3" onclick="affichageCarteParQuestionModalite(4,3)">
+					<i class="icon icon-glass icon-2x clearfix"></i></a>
+	    			<h5 class="sliding-title pull-right" style="display: none;">Théâtre<i class="icon icon-info-sign muted the-info"></i></h5>
+			</div>
+
+			<div class="item">
+			    	<a class="pull-left img-rounded" id="modalite4" onclick="affichageCarteParQuestionModalite(4,4)">
+					<i class="icon icon-glass icon-2x clearfix"></i></a>
+	    			<h5 class="sliding-title pull-right" style="display: none;">Restaurants<i class="icon icon-info-sign muted the-info"></i></h5>
+			</div>
+
+			<input type="hidden" class="modalite1">
+			<input type="hidden" class="modalite2">
+			<input type="hidden" class="modalite3">
+			<input type="hidden" class="modalite4">
+
+		</div>
+
+		<div id="sidebar5" class="pull-left">		
+			<div class="item">	   
+				<a class="pull-left img-rounded" id="modalite1" onclick="affichageCarteParQuestionModalite(5,1)">
+					<i class="icon icon-glass icon-2x clearfix"></i></a>
+		    		<h5 class="sliding-title-active pull-right" style="display: block;">Ta poussette</h5>
+			</div>		
+
+			<div class="item">
+			    	<a class="pull-left img-rounded" id="modalite2" onclick="affichageCarteParQuestionModalite(5,2)">
+					<i class="icon icon-glass icon-2x clearfix"></i></a>
+	    			<h5 class="sliding-title pull-right" style="display: none;">Ta bouteille<i class="icon icon-info-sign muted the-info"></i></h5>
+			</div>
+
+			<div class="item">
+			    	<a class="pull-left img-rounded" id="modalite3" onclick="affichageCarteParQuestionModalite(5,3)">
+					<i class="icon icon-glass icon-2x clearfix"></i></a>
+	    			<h5 class="sliding-title pull-right" style="display: none;">Tes médocs<i class="icon icon-info-sign muted the-info"></i></h5>
+			</div>
+
+			<div class="item">
+			    	<a class="pull-left img-rounded" id="modalite4" onclick="affichageCarteParQuestionModalite(5,4)">
+					<i class="icon icon-glass icon-2x clearfix"></i></a>
+	    			<h5 class="sliding-title pull-right" style="display: none;">Etre sur ton 31<i class="icon icon-info-sign muted the-info"></i></h5>
+			</div>
+
+			<input type="hidden" class="modalite1">
+			<input type="hidden" class="modalite2">
+			<input type="hidden" class="modalite3">
+			<input type="hidden" class="modalite4">
+
+		</div>
+	</div>
+
+    
+	</div>
+
+ 	<div class="col-lg-10"> 
+ 
+		<class id="Cartes">
+
+		<div id="map">
+		<svg height="705" version="1.1" width="980" xmlns="http://www.w3.org/2000/svg" style="overflow: hidden; position: relative; left: -0.078125px;" viewBox="0 0 980 705" preserveAspectRatio="none">
+			<desc style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Created with Raphaël 2.1.2</desc>
+<defs style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></defs>
+
+			<path fill="#fff1cb" stroke="#f4f4f4" d="M269,335L341,425L362,425L380,434L403,430L470,384L496,350L417,303L313,300L286,316Z" stroke-width="1" stroke-linejoin="round" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-linejoin: round; cursor: pointer;"  id="C7"></path>
+
+			<path fill="#fff1cb" stroke="#f4f4f4" d="M281,204L314,289L421,293L448,254L458,143L414,161L363,159L349,169L329,169Z" stroke-width="1" stroke-linejoin="round" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-linejoin: round; cursor: pointer;" id="C8"></path>
+
+			<path fill="#ffc932" stroke="#f4f4f4" d="M403,430L503,484L544,375L537,365L496,350L470,384Z" stroke-width="1" stroke-linejoin="round" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-linejoin: round; cursor: pointer;" id="C6"></path>
+
+			<path fill="#ffd665" stroke="#f4f4f4" d="M503,484L585,528L636,487L653,452L636,434L563,395L544,375Z" stroke-width="1" stroke-linejoin="round" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-linejoin: round; cursor: pointer;" id="C5"></path>
+
+			<path fill="#ffd665" stroke="#f4f4f4" d="M562,352L578,309L674,389L657,440L639,420L624,394L597,369Z" stroke-width="1" stroke-linejoin="round" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-linejoin: round; cursor: pointer;" id="C4"></path>
+
+			<path fill="#ffc932" stroke="#f4f4f4" d="M421,293L503,339L538,355L562,352L578,309L456,253L448,254Z" stroke-width="1" stroke-linejoin="round" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-linejoin: round; cursor: pointer;" id="C1"></path>
+
+			<path fill="#ffbc00" stroke="#f4f4f4" d="M456,253L494,243L554,243L595,257L578,309Z" stroke-width="1" stroke-linejoin="round" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-linejoin: round; cursor: pointer;" id="C2"></path>
+
+			<path fill="#ffbc00" stroke="#f4f4f4" d="M595,257L653,276L674,389L578,309Z" stroke-width="1" stroke-linejoin="round" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-linejoin: round; cursor: pointer;" id="C3"></path>
+
+			<path fill="#ffbc00" stroke="#f4f4f4" d="M653,276L722,251L730,253L769,308L777,341L809,367L837,440L710,409L674,389Z" stroke-width="1" stroke-linejoin="round" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-linejoin: round; cursor: pointer;" id="C11"></path>
+
+			<path fill="#ffe498" stroke="#f4f4f4" d="M837,440L909,456L924,430L914,409L908,220L888,200L853,208L793,207L730,253L769,308L777,341L809,367Z" stroke-width="1" stroke-linejoin="round" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-linejoin: round; cursor: pointer;" id="C20"></path>
+
+			<path fill="#fff1cb" stroke="#f4f4f4" d="M888,200L853,208L793,207L730,253L722,251L686,198L691,161L663,132L704,69L689,8L754,8L830,60L828,136L842,164Z" stroke-width="1" stroke-linejoin="round" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-linejoin: round; cursor: pointer;" id="C19"></path>
+
+			<path fill="#ffd665" stroke="#f4f4f4" d="M472,8L446,99L458,143L483,134L528,151L569,140L578,145L581,135L663,132L704,69L689,8Z" stroke-width="1" stroke-linejoin="round" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-linejoin: round; cursor: pointer;" id="C18"></path>
+
+			<path fill="#ffd665" stroke="#f4f4f4" d="M448,254L456,253L494,243L554,243L567,248L578,145L569,140L528,151L483,134L458,143Z" stroke-width="1" stroke-linejoin="round" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-linejoin: round; cursor: pointer;" id="C9"></path>
+
+			<path fill="#ffd665" stroke="#f4f4f4" d="M567,248L653,276L722,251L686,198L691,161L663,132L581,135L578,145Z" stroke-width="1" stroke-linejoin="round" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-linejoin: round; cursor: pointer;" id="C10"></path>
+
+			<path fill="#fff1cb" stroke="#f4f4f4" d="M536,502L528,611L546,681L573,668L620,692L754,627L761,603L772,598L756,581L696,499L653,452L636,487L585,528Z" stroke-width="1" stroke-linejoin="round" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-linejoin: round; cursor: pointer;" id="C13"></path>
+
+			<path fill="#ffe498" stroke="#f4f4f4" d="M313,602L367,531L445,453L536,502L528,611L546,681L541,683Z" stroke-width="1" stroke-linejoin="round" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-linejoin: round; cursor: pointer;" id="C14"></path>
+
+			<path fill="#fff1cb" stroke="#f4f4f4" d="M313,602L293,602L286,585L167,526L121,520L196,423L226,383L269,335L341,425L362,425L380,434L404,431L445,453L367,531Z" stroke-width="1" stroke-linejoin="round" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-linejoin: round; cursor: pointer;" id="C15"></path>
+
+			<path fill="#fff1cb" stroke="#f4f4f4" d="M109,518L101,516L81,509L73,491L58,480L52,458L62,435L73,431L196,179L281,204L314,289L309,289L281,307L207,390Z" stroke-width="1" stroke-linejoin="round" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-linejoin: round; cursor: pointer;" id="C16"></path>
+
+			<path fill="#ffe498" stroke="#f4f4f4" d="M196,179L208,173L266,102L348,45L425,8L472,8L446,99L458,143L414,161L363,159L349,169L329,169L281,204Z" stroke-width="1" stroke-linejoin="round" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-linejoin: round; cursor: pointer;" id="C17"></path>
+
+			<path fill="#ffd665" stroke="#f4f4f4" d="M657,440L674,389L710,409L837,440L908,456L913,493L881,546L785,595L764,575L707,494Z" stroke-width="1" stroke-linejoin="round" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-linejoin: round; cursor: pointer;" id="C12"></path>
+
+		</svg>
+	     	
+		<div class="item" id="a-1">
+	    		<div class="img-circle">
+	    			<div class="district">Ième</div>
+	    			<div class="rank" style="color: rgb(255, 188, 0);" id="A1"></div>
+	    		</div>
+	    	</div>
+	    	<div class="item" id="a-2">
+	    		<div class="img-circle">
+	    			<div class="district">IIème</div>
+		    		<div class="rank" style="color: rgb(255, 188, 0);" id="A2"></div>
+		    	</div>
+		    </div>
+		<div class="item" id="a-3">
+	    		<div class="img-circle">
+	    			<div class="district">IIIème</div>
+	    			<div class="rank" style="color: rgb(255, 188, 0);" id="A3"></div>
+		    	</div>
+		</div>
+	    	<div class="item" id="a-4">
+	    		<div class="img-circle">
+	    			<div class="district">IVème</div>
+	    			<div class="rank" style="color: rgb(255, 188, 0);" id="A4"></div>
+	    		</div>
+	    	</div>
+	    	<div class="item" id="a-5">
+	    		<div class="img-circle">
+	    			<div class="district">Vème</div>
+	    			<div class="rank" style="color: rgb(255, 188, 0);" id="A5"></div>
+	    		</div>
+	    	</div>
+	    	<div class="item" id="a-6">
+	    		<div class="img-circle">
+	    			<div class="district">VIème</div>
+		    		<div class="rank" style="color: rgb(255, 188, 0);" id="A6"></div>
+		    	</div>
+	    	</div>
+	    	<div class="item" id="a-7">
+	    		<div class="img-circle">
+	    			<div class="district">VIIème</div>
+		    		<div class="rank" style="color: rgb(255, 188, 0);" id="A7"></div>
+		    	</div>
+		</div>
+		<div class="item" id="a-8">
+	    		<div class="img-circle">
+	    			<div class="district">VIIIème</div>
+		    		<div class="rank" style="color: rgb(255, 188, 0);" id="A8"></div>
+		    	</div>
+		</div>
+	    	<div class="item" id="a-9">
+	    		<div class="img-circle">
+	    			<div class="district">IXème</div>
+	    			<div class="rank" style="color: rgb(255, 188, 0);" id="A9"></div>
+	    		</div>
+		</div>
+	    	<div class="item" id="a-10">
+	    		<div class="img-circle">
+	    			<div class="district">Xème</div>
+		    		<div class="rank" style="color: rgb(255, 188, 0);" id="A10"></div>
+	    		</div>
+	    	</div>
+	    	<div class="item" id="a-11">
+	    		<div class="img-circle">
+	    			<div class="district">XIème</div>
+		    		<div class="rank" style="color: rgb(255, 188, 0);" id="A11"></div>
+		    	</div>
+	    	</div>
+	    	<div class="item" id="a-12">
+	    		<div class="img-circle">
+	    			<div class="district">XIIème</div>
+		    		<div class="rank" style="color: rgb(255, 188, 0);" id="A12"></div>
+		    	</div>
+	    	</div>
+	    	<div class="item" id="a-13">
+	    		<div class="img-circle">
+	    			<div class="district">XIIIème</div>
+		    		<div class="rank" style="color: rgb(255, 188, 0);" id="A13"></div>
+		    	</div>
+	    	</div>
+	    	<div class="item" id="a-14">
+	    		<div class="img-circle">
+	    			<div class="district">XIVème</div>
+		    		<div class="rank" style="color: rgb(255, 188, 0);" id="A14"></div>
+		    	</div>
+		</div>
+	    	<div class="item" id="a-15">
+	    		<div class="img-circle">
+	    			<div class="district">XVème</div>
+		    		<div class="rank" style="color: rgb(255, 188, 0);" id="A15"></div>
+		    	</div>
+	    	</div>
+	    	<div class="item" id="a-16">
+	    		<div class="img-circle">
+	    			<div class="district">XVIème</div>
+		    		<div class="rank" style="color: rgb(255, 188, 0);" id="A16"></div>
+		    	</div>
+	    	</div>
+	    	<div class="item" id="a-17">
+	    		<div class="img-circle">
+	    			<div class="district">XVIIème</div>
+		    		<div class="rank" style="color: rgb(255, 188, 0);" id="A17"></div>
+		    	</div>
+	    	</div>
+	    	<div class="item" id="a-18">
+	    		<div class="img-circle">
+	    			<div class="district">XVIIIème</div>
+	    			<div class="rank" style="color: rgb(255, 188, 0);" id="A18"></div>
+	    		</div>
+	    	</div>
+	    	<div class="item" id="a-19">
+	    		<div class="img-circle">
+	    			<div class="district">XIXème</div>
+		    		<div class="rank" style="color: rgb(255, 188, 0);" id="A19"></div>
+		    	</div>
+	    	</div>
+	    	<div class="item" id="a-20">
+	    		<div class="img-circle">
+	    			<div class="district">XXème</div>
+		    		<div class="rank" style="color: rgb(255, 188, 0);" id="A20"></div>
+		    	</div>
+	    	</div>
+	</div>
+
+
+		</class>
+	</div>
+</div>
+
+
+		<script type="text/javascript" src="js/raphael-min.js"></script>
+		<script type="text/javascript" src="js/main.js"></script>
+	</section>
+
+
+
+	<!-- Pied de page -->
+			<footer id="footer">
+			<div class="container">
+				<div class="row">
+				<section class="5u 6u$(medium) 12u$(small)">
+                            		<ul class="tabular">
+						<h3>QUI SOMMES-NOUS ?</h3>
+                            				<h4>Etudiants en dernière année de l'ENSAE ParisTech, nous avons réalisé cette page web dans le cadre du cours de dataviz.</h4>                           
+                            			<h3><a href="sources.html">SOURCES</a></h3>  
+                            			<h3><a href="about.html">METHODOLOGIE</a></h3>  
+					</ul>
+				</section>
+				
+				<section class="5u$ 12u$(medium) 12u$(small)">
+					<h3>NOUS CONTACTER</h3>
+					<ul class="tabular">
+					<li> <h3>Mail</h3>
+							<h4><a href="mailto:ourteamvision@gmail.com">ourteamvision@gmail.com</a></h4> </li>
+                                	<li> <h3><a href="adresse perso linkedin" class="icon rounded fa-linkedin"><span class="label">LinkedInRD</span></a> </h3>
+                                			<h4><a href="adresse perso linkedin">Nom Prénom</a></h4> </li>
+					<li><h3><a href="fabien.agnus@ensae-paristech.fr" class="icon rounded fa-google-plus"><span class="label"></span></a></h3>
+                                			<h4><a href="adresse perso gmail">AGNUS Fabien</a></h4> </li>
+					<li><h3><a href="julie.djiriguian@ensae-paristech.fr" class="icon rounded fa-google-plus"><span class="label"></span></a></h3>
+                                			<h4><a href="adresse perso gmail">DJIRIGUIAN Julie</a></h4> </li>
+					<li><h3><a href="noemie.haouzi@ensae-paristech.fr" class="icon rounded fa-google-plus"><span class="label"></span></a></h3>
+                                			<h4><a href="adresse perso gmail">Haouzi Noémie</a></h4> </li>
+					<li><h3><a href="eva.hoyau@ensae-paristech.fr" class="icon rounded fa-google-plus"><span class="label"></span></a></h3>
+                                			<h4><a href="adresse perso gmail">HOYAU Eva</a></h4> </li>
+					<li><h3><a href="gaetan.polard@ensae-paristech.fr" class="icon rounded fa-google-plus"><span class="label"></span></a></h3>
+                                			<h4><a href="adresse perso gmail">POLARD Gaetan</a></h4> </li>
+					</ul>
+				</section>
+				</div>
+
+				<ul class="copyright">
+					<li>Design: <a href="http://templated.co">TEMPLATED</a></li>
+                        		<li>Icons:  <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> </li>
+                     		</ul>
+			</div>
+			</footer>
+
+
+
+
+	<!-- JavaScript -->
+	<script type="text/javascript">
+		document.querySelector('#sidebar2').style.display='none';
+		document.querySelector('#sidebar3').style.display='none';
+		document.querySelector('#sidebar4').style.display='none';
+		document.querySelector('#sidebar5').style.display='none';
+		document.querySelector('#sidebar1').style.display='block';
+		var affichPrec=1;
+		function affichageCarteParQuestion(answer){
+			document.querySelector('#sidebar'+affichPrec).style.display='none';
+			document.querySelector('#sidebar'+answer).style.display='block';
+			affichPrec=answer;
+		}
+		function affichageCarteParQuestionModalite(numQuestion, numModalite){
+
+
+switch (numQuestion) {
+case 1:
+switch (numModalite){
+case 1:
+document.querySelector('#Cartes').style.display='block';
+document.getElementById('A1').innerHTML = 'n°17';
+document.getElementById('A2').innerHTML = 'n°8';
+document.getElementById('A3').innerHTML = 'n°20';
+document.getElementById('A4').innerHTML = 'n°13';
+document.getElementById('A5').innerHTML = 'n°11';
+document.getElementById('A6').innerHTML = 'n°16';
+document.getElementById('A7').innerHTML = 'n°18';
+document.getElementById('A8').innerHTML = 'n°19';
+document.getElementById('A9').innerHTML = 'n°5';
+document.getElementById('A10').innerHTML = 'n°1';
+document.getElementById('A11').innerHTML = 'n°3';
+document.getElementById('A12').innerHTML = 'n°9';
+document.getElementById('A13').innerHTML = 'n°13';
+document.getElementById('A14').innerHTML = 'n°11';
+document.getElementById('A15').innerHTML = 'n°10';
+document.getElementById('A16').innerHTML = 'n°15';
+document.getElementById('A17').innerHTML = 'n°6';
+document.getElementById('A18').innerHTML = 'n°2';
+document.getElementById('A19').innerHTML = 'n°7';
+document.getElementById('A20').innerHTML = 'n°4';
+$('#C1').css('fill', 'FF00D0');
+$('#C2').css('fill', 'FF0010');
+$('#C3').css('fill', 'FF00F0');
+$('#C4').css('fill', 'FF0010');
+$('#C5').css('fill', 'FF0090');
+$('#C6').css('fill', 'FF00D0');
+$('#C7').css('fill', 'FF0090');
+$('#C8').css('fill', 'FF00FF');
+$('#C9').css('fill', 'FF00F0');
+$('#C10').css('fill', 'FF00B0');
+$('#C11').css('fill', 'FF0030');
+$('#C12').css('fill', 'FF0010');
+$('#C13').css('fill', 'FF00B0');
+$('#C14').css('fill', 'FF0040');
+$('#C15').css('fill', 'FF00A0');
+$('#C16').css('fill', 'FF0010');
+$('#C17').css('fill', 'FF0010');
+$('#C18').css('fill', 'FF0010');
+$('#C19').css('fill', 'FF0010');
+$('#C20').css('fill', 'FF0040');
+break;
+case 2:
+document.querySelector('#Cartes').style.display='block';
+document.getElementById('A1').innerHTML = 'n°20';
+document.getElementById('A2').innerHTML = 'n°9';
+document.getElementById('A3').innerHTML = 'n°4';
+document.getElementById('A4').innerHTML = 'n°15';
+document.getElementById('A5').innerHTML = 'n°6';
+document.getElementById('A6').innerHTML = 'n°3';
+document.getElementById('A7').innerHTML = 'n°16';
+document.getElementById('A8').innerHTML = 'n°18';
+document.getElementById('A9').innerHTML = 'n°7';
+document.getElementById('A10').innerHTML = 'n°1';
+document.getElementById('A11').innerHTML = 'n°12';
+document.getElementById('A12').innerHTML = 'n°10';
+document.getElementById('A13').innerHTML = 'n°19';
+document.getElementById('A14').innerHTML = 'n°14';
+document.getElementById('A15').innerHTML = 'n°10';
+document.getElementById('A16').innerHTML = 'n°5';
+document.getElementById('A17').innerHTML = 'n°7';
+document.getElementById('A18').innerHTML = 'n°2';
+document.getElementById('A19').innerHTML = 'n°13';
+document.getElementById('A20').innerHTML = 'n°17';
+$('#C1').css('fill', 'FF9000');
+$('#C2').css('fill', 'FFA000');
+$('#C3').css('fill', 'F0C000');
+$('#C4').css('fill', 'FFFF00');
+$('#C5').css('fill', 'FFFF00');
+$('#C6').css('fill', 'E05000');
+$('#C7').css('fill', 'FFFF00');
+$('#C8').css('fill', 'FFE000');
+$('#C9').css('fill', 'E07000');
+$('#C10').css('fill', 'FFF000');
+$('#C11').css('fill', 'FFC000');
+$('#C12').css('fill', 'FFFF00');
+$('#C13').css('fill', 'FFFF00');
+$('#C14').css('fill', 'FFF000');
+$('#C15').css('fill', 'FFD000');
+$('#C16').css('fill', 'E05000');
+$('#C17').css('fill', 'FFE000');
+$('#C18').css('fill', 'FF9000');
+$('#C19').css('fill', 'FFF000');
+$('#C20').css('fill', 'FF9000');
+break;
+case 3:
+document.querySelector('#Cartes').style.display='block';
+document.getElementById('A1').innerHTML = 'n°7';
+document.getElementById('A2').innerHTML = 'n°1';
+document.getElementById('A3').innerHTML = 'n°4';
+document.getElementById('A4').innerHTML = 'n°11';
+document.getElementById('A5').innerHTML = 'n°6';
+document.getElementById('A6').innerHTML = 'n°10';
+document.getElementById('A7').innerHTML = 'n°20';
+document.getElementById('A8').innerHTML = 'n°8';
+document.getElementById('A9').innerHTML = 'n°2';
+document.getElementById('A10').innerHTML = 'n°3';
+document.getElementById('A11').innerHTML = 'n°5';
+document.getElementById('A12').innerHTML = 'n°15';
+document.getElementById('A13').innerHTML = 'n°18';
+document.getElementById('A14').innerHTML = 'n°16';
+document.getElementById('A15').innerHTML = 'n°16';
+document.getElementById('A16').innerHTML = 'n°19';
+document.getElementById('A17').innerHTML = 'n°12';
+document.getElementById('A18').innerHTML = 'n°9';
+document.getElementById('A19').innerHTML = 'n°14';
+document.getElementById('A20').innerHTML = 'n°13';
+$('#C1').css('fill', '0060D0');
+$('#C2').css('fill', '0050D0');
+$('#C3').css('fill', '00C0D0');
+$('#C4').css('fill', '00B0D0');
+$('#C5').css('fill', '00E0D0');
+$('#C6').css('fill', '0070D0');
+$('#C7').css('fill', '0000D0');
+$('#C8').css('fill', '0070D0');
+$('#C9').css('fill', '0030D0');
+$('#C10').css('fill', '00F0D0');
+$('#C11').css('fill', '0090D0');
+$('#C12').css('fill', '0040D0');
+$('#C13').css('fill', '0090D0');
+$('#C14').css('fill', '0030D0');
+$('#C15').css('fill', '0010D0');
+$('#C16').css('fill', '0030D0');
+$('#C17').css('fill', '0080D0');
+$('#C18').css('fill', '0050D0');
+$('#C19').css('fill', '00E0D0');
+$('#C20').css('fill', '0040D0');
+break;
+case 4:
+document.querySelector('#Cartes').style.display='block';
+document.getElementById('A1').innerHTML = 'n°6';
+document.getElementById('A2').innerHTML = 'n°1';
+document.getElementById('A3').innerHTML = 'n°5';
+document.getElementById('A4').innerHTML = 'n°2';
+document.getElementById('A5').innerHTML = 'n°7';
+document.getElementById('A6').innerHTML = 'n°3';
+document.getElementById('A7').innerHTML = 'n°11';
+document.getElementById('A8').innerHTML = 'n°9';
+document.getElementById('A9').innerHTML = 'n°4';
+document.getElementById('A10').innerHTML = 'n°8';
+document.getElementById('A11').innerHTML = 'n°12';
+document.getElementById('A12').innerHTML = 'n°13';
+document.getElementById('A13').innerHTML = 'n°20';
+document.getElementById('A14').innerHTML = 'n°17';
+document.getElementById('A15').innerHTML = 'n°19';
+document.getElementById('A16').innerHTML = 'n°14';
+document.getElementById('A17').innerHTML = 'n°10';
+document.getElementById('A18').innerHTML = 'n°14';
+document.getElementById('A19').innerHTML = 'n°18';
+document.getElementById('A20').innerHTML = 'n°14';
+$('#C1').css('fill', 'FF00F0');
+$('#C2').css('fill', 'FF00C0');
+$('#C3').css('fill', 'FF00E0');
+$('#C4').css('fill', 'FF00F0');
+$('#C5').css('fill', 'FF00E0');
+$('#C6').css('fill', 'C000C0');
+$('#C7').css('fill', 'C000B0');
+$('#C8').css('fill', 'C000C0');
+$('#C9').css('fill', 'FF00B0');
+$('#C10').css('fill', 'FF00D0');
+$('#C11').css('fill', 'C000A0');
+$('#C12').css('fill', 'FF0080');
+$('#C13').css('fill', 'FF00C0');
+$('#C14').css('fill', 'FF00C0');
+$('#C15').css('fill', 'FF00E0');
+$('#C16').css('fill', 'FF00B0');
+$('#C17').css('fill', 'FF0065');
+$('#C18').css('fill', 'C000C0');
+$('#C19').css('fill', 'FF00D0');
+$('#C20').css('fill', 'C00090');
+break;
+}
+break;
+case 2:
+switch (numModalite){
+case 1:
+document.querySelector('#Cartes').style.display='block';
+document.getElementById('A1').innerHTML = 'n°10';
+document.getElementById('A2').innerHTML = 'n°10';
+document.getElementById('A3').innerHTML = 'n°10';
+document.getElementById('A4').innerHTML = 'n°10';
+document.getElementById('A5').innerHTML = 'n°3';
+document.getElementById('A6').innerHTML = 'n°10';
+document.getElementById('A7').innerHTML = 'n°10';
+document.getElementById('A8').innerHTML = 'n°10';
+document.getElementById('A9').innerHTML = 'n°1';
+document.getElementById('A10').innerHTML = 'n°10';
+document.getElementById('A11').innerHTML = 'n°2';
+document.getElementById('A12').innerHTML = 'n°4';
+document.getElementById('A13').innerHTML = 'n°8';
+document.getElementById('A14').innerHTML = 'n°10';
+document.getElementById('A15').innerHTML = 'n°9';
+document.getElementById('A16').innerHTML = 'n°4';
+document.getElementById('A17').innerHTML = 'n°6';
+document.getElementById('A18').innerHTML = 'n°10';
+document.getElementById('A19').innerHTML = 'n°10';
+document.getElementById('A20').innerHTML = 'n°7';
+$('#C1').css('fill', 'FF0070');
+$('#C2').css('fill', 'FF0010');
+$('#C3').css('fill', 'FF00E0');
+$('#C4').css('fill', 'FF0020');
+$('#C5').css('fill', 'FF0040');
+$('#C6').css('fill', 'FF00E0');
+$('#C7').css('fill', 'FF00FF');
+$('#C8').css('fill', 'FF0050');
+$('#C9').css('fill', 'FF00D0');
+$('#C10').css('fill', 'FF0090');
+$('#C11').css('fill', 'FF0080');
+$('#C12').css('fill', 'FF00D0');
+$('#C13').css('fill', 'FF0070');
+$('#C14').css('fill', 'FF0090');
+$('#C15').css('fill', 'FF00D0');
+$('#C16').css('fill', 'FF00A0');
+$('#C17').css('fill', 'FF00E0');
+$('#C18').css('fill', 'FF0040');
+$('#C19').css('fill', 'FF00B0');
+$('#C20').css('fill', 'FF0060');
+break;
+case 2:
+document.querySelector('#Cartes').style.display='block';
+document.getElementById('A1').innerHTML = 'n°11';
+document.getElementById('A2').innerHTML = 'n°11';
+document.getElementById('A3').innerHTML = 'n°11';
+document.getElementById('A4').innerHTML = 'n°11';
+document.getElementById('A5').innerHTML = 'n°11';
+document.getElementById('A6').innerHTML = 'n°11';
+document.getElementById('A7').innerHTML = 'n°11';
+document.getElementById('A8').innerHTML = 'n°11';
+document.getElementById('A9').innerHTML = 'n°11';
+document.getElementById('A10').innerHTML = 'n°10';
+document.getElementById('A11').innerHTML = 'n°11';
+document.getElementById('A12').innerHTML = 'n°1';
+document.getElementById('A13').innerHTML = 'n°7';
+document.getElementById('A14').innerHTML = 'n°2';
+document.getElementById('A15').innerHTML = 'n°8';
+document.getElementById('A16').innerHTML = 'n°3';
+document.getElementById('A17').innerHTML = 'n°5';
+document.getElementById('A18').innerHTML = 'n°4';
+document.getElementById('A19').innerHTML = 'n°9';
+document.getElementById('A20').innerHTML = 'n°6';
+$('#C1').css('fill', 'FFC000');
+$('#C2').css('fill', 'E07000');
+$('#C3').css('fill', 'FF7000');
+$('#C4').css('fill', 'E07000');
+$('#C5').css('fill', 'FF6000');
+$('#C6').css('fill', 'FFA000');
+$('#C7').css('fill', 'FFC000');
+$('#C8').css('fill', 'E07000');
+$('#C9').css('fill', 'FFA000');
+$('#C10').css('fill', 'FF8000');
+$('#C11').css('fill', 'FFD000');
+$('#C12').css('fill', 'FFD000');
+$('#C13').css('fill', 'FF5000');
+$('#C14').css('fill', 'FFB000');
+$('#C15').css('fill', 'FF7000');
+$('#C16').css('fill', 'E06000');
+$('#C17').css('fill', 'FFA000');
+$('#C18').css('fill', 'FFE000');
+$('#C19').css('fill', 'FFA000');
+$('#C20').css('fill', 'FFC000');
+break;
+case 3:
+document.querySelector('#Cartes').style.display='block';
+document.getElementById('A1').innerHTML = 'n°15';
+document.getElementById('A2').innerHTML = 'n°15';
+document.getElementById('A3').innerHTML = 'n°15';
+document.getElementById('A4').innerHTML = 'n°15';
+document.getElementById('A5').innerHTML = 'n°12';
+document.getElementById('A6').innerHTML = 'n°5';
+document.getElementById('A7').innerHTML = 'n°14';
+document.getElementById('A8').innerHTML = 'n°15';
+document.getElementById('A9').innerHTML = 'n°15';
+document.getElementById('A10').innerHTML = 'n°13';
+document.getElementById('A11').innerHTML = 'n°11';
+document.getElementById('A12').innerHTML = 'n°3';
+document.getElementById('A13').innerHTML = 'n°2';
+document.getElementById('A14').innerHTML = 'n°7';
+document.getElementById('A15').innerHTML = 'n°3';
+document.getElementById('A16').innerHTML = 'n°1';
+document.getElementById('A17').innerHTML = 'n°8';
+document.getElementById('A18').innerHTML = 'n°10';
+document.getElementById('A19').innerHTML = 'n°9';
+document.getElementById('A20').innerHTML = 'n°6';
+$('#C1').css('fill', '0080D0');
+$('#C2').css('fill', '0060D0');
+$('#C3').css('fill', '0060D0');
+$('#C4').css('fill', '0070D0');
+$('#C5').css('fill', '00F0D0');
+$('#C6').css('fill', '00D0D0');
+$('#C7').css('fill', '0060D0');
+$('#C8').css('fill', '0020D0');
+$('#C9').css('fill', '0070D0');
+$('#C10').css('fill', '00E0D0');
+$('#C11').css('fill', '0020D0');
+$('#C12').css('fill', '0090D0');
+$('#C13').css('fill', '00A0D0');
+$('#C14').css('fill', '0080D0');
+$('#C15').css('fill', '0060D0');
+$('#C16').css('fill', '00F0D0');
+$('#C17').css('fill', '0020D0');
+$('#C18').css('fill', '0030D0');
+$('#C19').css('fill', '0010D0');
+$('#C20').css('fill', '00F0D0');
+break;
+case 4:
+document.querySelector('#Cartes').style.display='block';
+document.getElementById('A1').innerHTML = 'n°13';
+document.getElementById('A2').innerHTML = 'n°13';
+document.getElementById('A3').innerHTML = 'n°13';
+document.getElementById('A4').innerHTML = 'n°13';
+document.getElementById('A5').innerHTML = 'n°13';
+document.getElementById('A6').innerHTML = 'n°13';
+document.getElementById('A7').innerHTML = 'n°13';
+document.getElementById('A8').innerHTML = 'n°13';
+document.getElementById('A9').innerHTML = 'n°5';
+document.getElementById('A10').innerHTML = 'n°6';
+document.getElementById('A11').innerHTML = 'n°1';
+document.getElementById('A12').innerHTML = 'n°3';
+document.getElementById('A13').innerHTML = 'n°7';
+document.getElementById('A14').innerHTML = 'n°8';
+document.getElementById('A15').innerHTML = 'n°2';
+document.getElementById('A16').innerHTML = 'n°12';
+document.getElementById('A17').innerHTML = 'n°8';
+document.getElementById('A18').innerHTML = 'n°10';
+document.getElementById('A19').innerHTML = 'n°11';
+document.getElementById('A20').innerHTML = 'n°4';
+$('#C1').css('fill', 'FF0080');
+$('#C2').css('fill', 'FF00B0');
+$('#C3').css('fill', 'C000B0');
+$('#C4').css('fill', 'FF00FF');
+$('#C5').css('fill', 'C000B0');
+$('#C6').css('fill', 'FF0065');
+$('#C7').css('fill', 'FF00F0');
+$('#C8').css('fill', 'FF0090');
+$('#C9').css('fill', 'FF00C0');
+$('#C10').css('fill', 'FF00D0');
+$('#C11').css('fill', 'FF00C0');
+$('#C12').css('fill', 'C00070');
+$('#C13').css('fill', 'FF0090');
+$('#C14').css('fill', 'FF00C0');
+$('#C15').css('fill', 'C00080');
+$('#C16').css('fill', 'FF00D0');
+$('#C17').css('fill', 'FF00FF');
+$('#C18').css('fill', 'C000B0');
+$('#C19').css('fill', 'FF0090');
+$('#C20').css('fill', 'FF00D0');
+break;
+}
+break;
+case 3:
+switch (numModalite){
+case 1:
+document.querySelector('#Cartes').style.display='block';
+document.getElementById('A1').innerHTML = 'n°14';
+document.getElementById('A2').innerHTML = 'n°20';
+document.getElementById('A3').innerHTML = 'n°16';
+document.getElementById('A4').innerHTML = 'n°11';
+document.getElementById('A5').innerHTML = 'n°11';
+document.getElementById('A6').innerHTML = 'n°18';
+document.getElementById('A7').innerHTML = 'n°2';
+document.getElementById('A8').innerHTML = 'n°6';
+document.getElementById('A9').innerHTML = 'n°18';
+document.getElementById('A10').innerHTML = 'n°17';
+document.getElementById('A11').innerHTML = 'n°14';
+document.getElementById('A12').innerHTML = 'n°3';
+document.getElementById('A13').innerHTML = 'n°9';
+document.getElementById('A14').innerHTML = 'n°7';
+document.getElementById('A15').innerHTML = 'n°4';
+document.getElementById('A16').innerHTML = 'n°1';
+document.getElementById('A17').innerHTML = 'n°10';
+document.getElementById('A18').innerHTML = 'n°11';
+document.getElementById('A19').innerHTML = 'n°5';
+document.getElementById('A20').innerHTML = 'n°8';
+$('#C1').css('fill', 'FF0020');
+$('#C2').css('fill', 'FF0040');
+$('#C3').css('fill', 'FF00C0');
+$('#C4').css('fill', 'FF0010');
+$('#C5').css('fill', 'FF0040');
+$('#C6').css('fill', 'FF00F0');
+$('#C7').css('fill', 'FF00D0');
+$('#C8').css('fill', 'FF0010');
+$('#C9').css('fill', 'FF00A0');
+$('#C10').css('fill', 'FF00A0');
+$('#C11').css('fill', 'FF0010');
+$('#C12').css('fill', 'FF00FF');
+$('#C13').css('fill', 'FF0070');
+$('#C14').css('fill', 'FF0080');
+$('#C15').css('fill', 'FF00FF');
+$('#C16').css('fill', 'FF00A0');
+$('#C17').css('fill', 'FF0050');
+$('#C18').css('fill', 'FF00C0');
+$('#C19').css('fill', 'FF00F0');
+$('#C20').css('fill', 'FF00F0');
+break;
+case 2:
+document.querySelector('#Cartes').style.display='block';
+document.getElementById('A1').innerHTML = 'n°5';
+document.getElementById('A2').innerHTML = 'n°17';
+document.getElementById('A3').innerHTML = 'n°1';
+document.getElementById('A4').innerHTML = 'n°2';
+document.getElementById('A5').innerHTML = 'n°20';
+document.getElementById('A6').innerHTML = 'n°3';
+document.getElementById('A7').innerHTML = 'n°16';
+document.getElementById('A8').innerHTML = 'n°6';
+document.getElementById('A9').innerHTML = 'n°6';
+document.getElementById('A10').innerHTML = 'n°8';
+document.getElementById('A11').innerHTML = 'n°3';
+document.getElementById('A12').innerHTML = 'n°10';
+document.getElementById('A13').innerHTML = 'n°19';
+document.getElementById('A14').innerHTML = 'n°14';
+document.getElementById('A15').innerHTML = 'n°15';
+document.getElementById('A16').innerHTML = 'n°11';
+document.getElementById('A17').innerHTML = 'n°18';
+document.getElementById('A18').innerHTML = 'n°9';
+document.getElementById('A19').innerHTML = 'n°12';
+document.getElementById('A20').innerHTML = 'n°12';
+$('#C1').css('fill', 'FFC000');
+$('#C2').css('fill', 'FF9000');
+$('#C3').css('fill', 'F0C000');
+$('#C4').css('fill', 'E05000');
+$('#C5').css('fill', 'E06000');
+$('#C6').css('fill', 'FF5000');
+$('#C7').css('fill', 'FFA000');
+$('#C8').css('fill', 'E07000');
+$('#C9').css('fill', 'FF8000');
+$('#C10').css('fill', 'FFD000');
+$('#C11').css('fill', 'FFE000');
+$('#C12').css('fill', 'E05000');
+$('#C13').css('fill', 'E06000');
+$('#C14').css('fill', 'F0C000');
+$('#C15').css('fill', 'FF9000');
+$('#C16').css('fill', 'FFB000');
+$('#C17').css('fill', 'FFD000');
+$('#C18').css('fill', 'FFC000');
+$('#C19').css('fill', 'FF6000');
+$('#C20').css('fill', 'FF9000');
+break;
+case 3:
+document.querySelector('#Cartes').style.display='block';
+document.getElementById('A1').innerHTML = 'n°6';
+document.getElementById('A2').innerHTML = 'n°1';
+document.getElementById('A3').innerHTML = 'n°8';
+document.getElementById('A4').innerHTML = 'n°2';
+document.getElementById('A5').innerHTML = 'n°4';
+document.getElementById('A6').innerHTML = 'n°3';
+document.getElementById('A7').innerHTML = 'n°11';
+document.getElementById('A8').innerHTML = 'n°19';
+document.getElementById('A9').innerHTML = 'n°7';
+document.getElementById('A10').innerHTML = 'n°5';
+document.getElementById('A11').innerHTML = 'n°11';
+document.getElementById('A12').innerHTML = 'n°16';
+document.getElementById('A13').innerHTML = 'n°10';
+document.getElementById('A14').innerHTML = 'n°14';
+document.getElementById('A15').innerHTML = 'n°18';
+document.getElementById('A16').innerHTML = 'n°20';
+document.getElementById('A17').innerHTML = 'n°15';
+document.getElementById('A18').innerHTML = 'n°11';
+document.getElementById('A19').innerHTML = 'n°16';
+document.getElementById('A20').innerHTML = 'n°9';
+$('#C1').css('fill', '0000D0');
+$('#C2').css('fill', '00D0D0');
+$('#C3').css('fill', '0060D0');
+$('#C4').css('fill', '00E0D0');
+$('#C5').css('fill', '00D0D0');
+$('#C6').css('fill', '00E0D0');
+$('#C7').css('fill', '0010D0');
+$('#C8').css('fill', '00D0D0');
+$('#C9').css('fill', '0090D0');
+$('#C10').css('fill', '0070D0');
+$('#C11').css('fill', '0070D0');
+$('#C12').css('fill', '0050D0');
+$('#C13').css('fill', '00C0D0');
+$('#C14').css('fill', '0020D0');
+$('#C15').css('fill', '0040D0');
+$('#C16').css('fill', '00B0D0');
+$('#C17').css('fill', '0050D0');
+$('#C18').css('fill', '00B0D0');
+$('#C19').css('fill', '0000D0');
+$('#C20').css('fill', '0030D0');
+break;
+case 4:
+document.querySelector('#Cartes').style.display='block';
+document.getElementById('A1').innerHTML = 'n°1';
+document.getElementById('A2').innerHTML = 'n°4';
+document.getElementById('A3').innerHTML = 'n°6';
+document.getElementById('A4').innerHTML = 'n°2';
+document.getElementById('A5').innerHTML = 'n°3';
+document.getElementById('A6').innerHTML = 'n°7';
+document.getElementById('A7').innerHTML = 'n°15';
+document.getElementById('A8').innerHTML = 'n°8';
+document.getElementById('A9').innerHTML = 'n°5';
+document.getElementById('A10').innerHTML = 'n°8';
+document.getElementById('A11').innerHTML = 'n°10';
+document.getElementById('A12').innerHTML = 'n°19';
+document.getElementById('A13').innerHTML = 'n°14';
+document.getElementById('A14').innerHTML = 'n°12';
+document.getElementById('A15').innerHTML = 'n°13';
+document.getElementById('A16').innerHTML = 'n°20';
+document.getElementById('A17').innerHTML = 'n°11';
+document.getElementById('A18').innerHTML = 'n°15';
+document.getElementById('A19').innerHTML = 'n°17';
+document.getElementById('A20').innerHTML = 'n°17';
+$('#C1').css('fill', 'FF0090');
+$('#C2').css('fill', 'C00090');
+$('#C3').css('fill', 'FF0080');
+$('#C4').css('fill', 'C00080');
+$('#C5').css('fill', 'FF00C0');
+$('#C6').css('fill', 'C000C0');
+$('#C7').css('fill', 'FF00FF');
+$('#C8').css('fill', 'C00070');
+$('#C9').css('fill', 'C000B0');
+$('#C10').css('fill', 'FF0080');
+$('#C11').css('fill', 'C00070');
+$('#C12').css('fill', 'FF00E0');
+$('#C13').css('fill', 'FF00B0');
+$('#C14').css('fill', 'FF00A0');
+$('#C15').css('fill', 'C00090');
+$('#C16').css('fill', 'C00080');
+$('#C17').css('fill', 'FF00A0');
+$('#C18').css('fill', 'FF00E0');
+$('#C19').css('fill', 'FF00C0');
+$('#C20').css('fill', 'FF00F0');
+break;
+}
+break;
+case 4:
+switch (numModalite){
+case 1:
+document.querySelector('#Cartes').style.display='block';
+document.getElementById('A1').innerHTML = 'n°4';
+document.getElementById('A2').innerHTML = 'n°14';
+document.getElementById('A3').innerHTML = 'n°14';
+document.getElementById('A4').innerHTML = 'n°10';
+document.getElementById('A5').innerHTML = 'n°2';
+document.getElementById('A6').innerHTML = 'n°14';
+document.getElementById('A7').innerHTML = 'n°14';
+document.getElementById('A8').innerHTML = 'n°14';
+document.getElementById('A9').innerHTML = 'n°5';
+document.getElementById('A10').innerHTML = 'n°5';
+document.getElementById('A11').innerHTML = 'n°11';
+document.getElementById('A12').innerHTML = 'n°13';
+document.getElementById('A13').innerHTML = 'n°2';
+document.getElementById('A14').innerHTML = 'n°5';
+document.getElementById('A15').innerHTML = 'n°14';
+document.getElementById('A16').innerHTML = 'n°11';
+document.getElementById('A17').innerHTML = 'n°5';
+document.getElementById('A18').innerHTML = 'n°14';
+document.getElementById('A19').innerHTML = 'n°9';
+document.getElementById('A20').innerHTML = 'n°1';
+$('#C1').css('fill', 'FF0020');
+$('#C2').css('fill', 'FF00FF');
+$('#C3').css('fill', 'FF0040');
+$('#C4').css('fill', 'FF0020');
+$('#C5').css('fill', 'FF00E0');
+$('#C6').css('fill', 'FF0080');
+$('#C7').css('fill', 'FF0050');
+$('#C8').css('fill', 'FF00B0');
+$('#C9').css('fill', 'FF00D0');
+$('#C10').css('fill', 'FF00B0');
+$('#C11').css('fill', 'FF00D0');
+$('#C12').css('fill', 'FF0070');
+$('#C13').css('fill', 'FF0030');
+$('#C14').css('fill', 'FF00E0');
+$('#C15').css('fill', 'FF0020');
+$('#C16').css('fill', 'FF0050');
+$('#C17').css('fill', 'FF00F0');
+$('#C18').css('fill', 'FF0050');
+$('#C19').css('fill', 'FF0020');
+$('#C20').css('fill', 'FF00D0');
+break;
+case 2:
+document.querySelector('#Cartes').style.display='block';
+document.getElementById('A1').innerHTML = 'n°6';
+document.getElementById('A2').innerHTML = 'n°1';
+document.getElementById('A3').innerHTML = 'n°7';
+document.getElementById('A4').innerHTML = 'n°5';
+document.getElementById('A5').innerHTML = 'n°9';
+document.getElementById('A6').innerHTML = 'n°8';
+document.getElementById('A7').innerHTML = 'n°18';
+document.getElementById('A8').innerHTML = 'n°11';
+document.getElementById('A9').innerHTML = 'n°2';
+document.getElementById('A10').innerHTML = 'n°4';
+document.getElementById('A11').innerHTML = 'n°3';
+document.getElementById('A12').innerHTML = 'n°14';
+document.getElementById('A13').innerHTML = 'n°16';
+document.getElementById('A14').innerHTML = 'n°16';
+document.getElementById('A15').innerHTML = 'n°18';
+document.getElementById('A16').innerHTML = 'n°20';
+document.getElementById('A17').innerHTML = 'n°12';
+document.getElementById('A18').innerHTML = 'n°10';
+document.getElementById('A19').innerHTML = 'n°15';
+document.getElementById('A20').innerHTML = 'n°13';
+$('#C1').css('fill', 'E06000');
+$('#C2').css('fill', 'E07000');
+$('#C3').css('fill', 'FFA000');
+$('#C4').css('fill', 'FF8000');
+$('#C5').css('fill', 'FF5000');
+$('#C6').css('fill', 'FFF000');
+$('#C7').css('fill', 'E06000');
+$('#C8').css('fill', 'FF9000');
+$('#C9').css('fill', 'FF8000');
+$('#C10').css('fill', 'E05000');
+$('#C11').css('fill', 'F0C000');
+$('#C12').css('fill', 'F0C000');
+$('#C13').css('fill', 'FFC000');
+$('#C14').css('fill', 'FFC000');
+$('#C15').css('fill', 'FFFF00');
+$('#C16').css('fill', 'FFA000');
+$('#C17').css('fill', 'FF9000');
+$('#C18').css('fill', 'FF9000');
+$('#C19').css('fill', 'FF6000');
+$('#C20').css('fill', 'FF6000');
+break;
+case 3:
+document.querySelector('#Cartes').style.display='block';
+document.getElementById('A1').innerHTML = 'n°17';
+document.getElementById('A2').innerHTML = 'n°11';
+document.getElementById('A3').innerHTML = 'n°3';
+document.getElementById('A4').innerHTML = 'n°8';
+document.getElementById('A5').innerHTML = 'n°2';
+document.getElementById('A6').innerHTML = 'n°1';
+document.getElementById('A7').innerHTML = 'n°19';
+document.getElementById('A8').innerHTML = 'n°8';
+document.getElementById('A9').innerHTML = 'n°6';
+document.getElementById('A10').innerHTML = 'n°4';
+document.getElementById('A11').innerHTML = 'n°5';
+document.getElementById('A12').innerHTML = 'n°18';
+document.getElementById('A13').innerHTML = 'n°14';
+document.getElementById('A14').innerHTML = 'n°7';
+document.getElementById('A15').innerHTML = 'n°16';
+document.getElementById('A16').innerHTML = 'n°20';
+document.getElementById('A17').innerHTML = 'n°12';
+document.getElementById('A18').innerHTML = 'n°10';
+document.getElementById('A19').innerHTML = 'n°14';
+document.getElementById('A20').innerHTML = 'n°12';
+$('#C1').css('fill', '0010D0');
+$('#C2').css('fill', '0070D0');
+$('#C3').css('fill', '0020D0');
+$('#C4').css('fill', '00D0D0');
+$('#C5').css('fill', '0040D0');
+$('#C6').css('fill', '0060D0');
+$('#C7').css('fill', '0060D0');
+$('#C8').css('fill', '0090D0');
+$('#C9').css('fill', '00C0D0');
+$('#C10').css('fill', '0060D0');
+$('#C11').css('fill', '0020D0');
+$('#C12').css('fill', '0080D0');
+$('#C13').css('fill', '0090D0');
+$('#C14').css('fill', '0050D0');
+$('#C15').css('fill', '00B0D0');
+$('#C16').css('fill', '00B0D0');
+$('#C17').css('fill', '00A0D0');
+$('#C18').css('fill', '0000D0');
+$('#C19').css('fill', '0070D0');
+$('#C20').css('fill', '0070D0');
+break;
+case 4:
+document.querySelector('#Cartes').style.display='block';
+document.getElementById('A1').innerHTML = 'n°4';
+document.getElementById('A2').innerHTML = 'n°1';
+document.getElementById('A3').innerHTML = 'n°3';
+document.getElementById('A4').innerHTML = 'n°8';
+document.getElementById('A5').innerHTML = 'n°7';
+document.getElementById('A6').innerHTML = 'n°9';
+document.getElementById('A7').innerHTML = 'n°14';
+document.getElementById('A8').innerHTML = 'n°10';
+document.getElementById('A9').innerHTML = 'n°2';
+document.getElementById('A10').innerHTML = 'n°5';
+document.getElementById('A11').innerHTML = 'n°6';
+document.getElementById('A12').innerHTML = 'n°14';
+document.getElementById('A13').innerHTML = 'n°18';
+document.getElementById('A14').innerHTML = 'n°14';
+document.getElementById('A15').innerHTML = 'n°13';
+document.getElementById('A16').innerHTML = 'n°20';
+document.getElementById('A17').innerHTML = 'n°12';
+document.getElementById('A18').innerHTML = 'n°11';
+document.getElementById('A19').innerHTML = 'n°19';
+document.getElementById('A20').innerHTML = 'n°14';
+$('#C1').css('fill', 'C00080');
+$('#C2').css('fill', 'C00090');
+$('#C3').css('fill', 'C00070');
+$('#C4').css('fill', 'FF0090');
+$('#C5').css('fill', 'C00070');
+$('#C6').css('fill', 'FF0065');
+$('#C7').css('fill', 'C00070');
+$('#C8').css('fill', 'FF00B0');
+$('#C9').css('fill', 'FF00FF');
+$('#C10').css('fill', 'C00080');
+$('#C11').css('fill', 'C000C0');
+$('#C12').css('fill', 'FF00FF');
+$('#C13').css('fill', 'FF00C0');
+$('#C14').css('fill', 'C000A0');
+$('#C15').css('fill', 'FF00D0');
+$('#C16').css('fill', 'C000B0');
+$('#C17').css('fill', 'FF00E0');
+$('#C18').css('fill', 'FF00B0');
+$('#C19').css('fill', 'FF00E0');
+$('#C20').css('fill', 'FF00C0');
+break;
+}
+break;
+case 5:
+switch (numModalite){
+case 1:
+document.querySelector('#Cartes').style.display='block';
+document.getElementById('A1').innerHTML = 'n°20';
+document.getElementById('A2').innerHTML = 'n°12';
+document.getElementById('A3').innerHTML = 'n°6';
+document.getElementById('A4').innerHTML = 'n°7';
+document.getElementById('A5').innerHTML = 'n°9';
+document.getElementById('A6').innerHTML = 'n°17';
+document.getElementById('A7').innerHTML = 'n°18';
+document.getElementById('A8').innerHTML = 'n°19';
+document.getElementById('A9').innerHTML = 'n°8';
+document.getElementById('A10').innerHTML = 'n°5';
+document.getElementById('A11').innerHTML = 'n°2';
+document.getElementById('A12').innerHTML = 'n°14';
+document.getElementById('A13').innerHTML = 'n°9';
+document.getElementById('A14').innerHTML = 'n°14';
+document.getElementById('A15').innerHTML = 'n°12';
+document.getElementById('A16').innerHTML = 'n°16';
+document.getElementById('A17').innerHTML = 'n°11';
+document.getElementById('A18').innerHTML = 'n°4';
+document.getElementById('A19').innerHTML = 'n°3';
+document.getElementById('A20').innerHTML = 'n°1';
+$('#C1').css('fill', 'FF00A0');
+$('#C2').css('fill', 'FF0090');
+$('#C3').css('fill', 'FF00A0');
+$('#C4').css('fill', 'FF0030');
+$('#C5').css('fill', 'FF00D0');
+$('#C6').css('fill', 'FF00E0');
+$('#C7').css('fill', 'FF00E0');
+$('#C8').css('fill', 'FF00A0');
+$('#C9').css('fill', 'FF00FF');
+$('#C10').css('fill', 'FF0070');
+$('#C11').css('fill', 'FF0080');
+$('#C12').css('fill', 'FF0020');
+$('#C13').css('fill', 'FF0070');
+$('#C14').css('fill', 'FF0070');
+$('#C15').css('fill', 'FF00B0');
+$('#C16').css('fill', 'FF00B0');
+$('#C17').css('fill', 'FF0080');
+$('#C18').css('fill', 'FF0090');
+$('#C19').css('fill', 'FF00B0');
+$('#C20').css('fill', 'FF00F0');
+break;
+case 2:
+document.querySelector('#Cartes').style.display='block';
+document.getElementById('A1').innerHTML = 'n°11';
+document.getElementById('A2').innerHTML = 'n°1';
+document.getElementById('A3').innerHTML = 'n°2';
+document.getElementById('A4').innerHTML = 'n°6';
+document.getElementById('A5').innerHTML = 'n°8';
+document.getElementById('A6').innerHTML = 'n°10';
+document.getElementById('A7').innerHTML = 'n°12';
+document.getElementById('A8').innerHTML = 'n°5';
+document.getElementById('A9').innerHTML = 'n°3';
+document.getElementById('A10').innerHTML = 'n°7';
+document.getElementById('A11').innerHTML = 'n°4';
+document.getElementById('A12').innerHTML = 'n°17';
+document.getElementById('A13').innerHTML = 'n°18';
+document.getElementById('A14').innerHTML = 'n°15';
+document.getElementById('A15').innerHTML = 'n°16';
+document.getElementById('A16').innerHTML = 'n°14';
+document.getElementById('A17').innerHTML = 'n°9';
+document.getElementById('A18').innerHTML = 'n°12';
+document.getElementById('A19').innerHTML = 'n°20';
+document.getElementById('A20').innerHTML = 'n°18';
+$('#C1').css('fill', 'FFA000');
+$('#C2').css('fill', 'FF6000');
+$('#C3').css('fill', 'FFB000');
+$('#C4').css('fill', 'E06000');
+$('#C5').css('fill', 'FFA000');
+$('#C6').css('fill', 'E05000');
+$('#C7').css('fill', 'FFA000');
+$('#C8').css('fill', 'FFF000');
+$('#C9').css('fill', 'FFD000');
+$('#C10').css('fill', 'E07000');
+$('#C11').css('fill', 'E05000');
+$('#C12').css('fill', 'FFB000');
+$('#C13').css('fill', 'FFE000');
+$('#C14').css('fill', 'E06000');
+$('#C15').css('fill', 'FFA000');
+$('#C16').css('fill', 'FF6000');
+$('#C17').css('fill', 'FF9000');
+$('#C18').css('fill', 'FF5000');
+$('#C19').css('fill', 'F0C000');
+$('#C20').css('fill', 'FFB000');
+break;
+case 3:
+document.querySelector('#Cartes').style.display='block';
+document.getElementById('A1').innerHTML = 'n°18';
+document.getElementById('A2').innerHTML = 'n°7';
+document.getElementById('A3').innerHTML = 'n°3';
+document.getElementById('A4').innerHTML = 'n°12';
+document.getElementById('A5').innerHTML = 'n°5';
+document.getElementById('A6').innerHTML = 'n°4';
+document.getElementById('A7').innerHTML = 'n°15';
+document.getElementById('A8').innerHTML = 'n°6';
+document.getElementById('A9').innerHTML = 'n°1';
+document.getElementById('A10').innerHTML = 'n°9';
+document.getElementById('A11').innerHTML = 'n°1';
+document.getElementById('A12').innerHTML = 'n°15';
+document.getElementById('A13').innerHTML = 'n°14';
+document.getElementById('A14').innerHTML = 'n°11';
+document.getElementById('A15').innerHTML = 'n°13';
+document.getElementById('A16').innerHTML = 'n°10';
+document.getElementById('A17').innerHTML = 'n°7';
+document.getElementById('A18').innerHTML = 'n°18';
+document.getElementById('A19').innerHTML = 'n°20';
+document.getElementById('A20').innerHTML = 'n°17';
+$('#C1').css('fill', '00E0D0');
+$('#C2').css('fill', '00F0D0');
+$('#C3').css('fill', '0000D0');
+$('#C4').css('fill', '00F0D0');
+$('#C5').css('fill', '00F0D0');
+$('#C6').css('fill', '0050D0');
+$('#C7').css('fill', '0020D0');
+$('#C8').css('fill', '0000D0');
+$('#C9').css('fill', '00D0D0');
+$('#C10').css('fill', '0000D0');
+$('#C11').css('fill', '0070D0');
+$('#C12').css('fill', '0020D0');
+$('#C13').css('fill', '00E0D0');
+$('#C14').css('fill', '0050D0');
+$('#C15').css('fill', '0030D0');
+$('#C16').css('fill', '0030D0');
+$('#C17').css('fill', '00C0D0');
+$('#C18').css('fill', '00B0D0');
+$('#C19').css('fill', '0070D0');
+$('#C20').css('fill', '0090D0');
+break;
+case 4:
+document.querySelector('#Cartes').style.display='block';
+document.getElementById('A1').innerHTML = 'n°1';
+document.getElementById('A2').innerHTML = 'n°6';
+document.getElementById('A3').innerHTML = 'n°2';
+document.getElementById('A4').innerHTML = 'n°4';
+document.getElementById('A5').innerHTML = 'n°15';
+document.getElementById('A6').innerHTML = 'n°3';
+document.getElementById('A7').innerHTML = 'n°11';
+document.getElementById('A8').innerHTML = 'n°7';
+document.getElementById('A9').innerHTML = 'n°5';
+document.getElementById('A10').innerHTML = 'n°8';
+document.getElementById('A11').innerHTML = 'n°9';
+document.getElementById('A12').innerHTML = 'n°19';
+document.getElementById('A13').innerHTML = 'n°20';
+document.getElementById('A14').innerHTML = 'n°16';
+document.getElementById('A15').innerHTML = 'n°14';
+document.getElementById('A16').innerHTML = 'n°12';
+document.getElementById('A17').innerHTML = 'n°10';
+document.getElementById('A18').innerHTML = 'n°13';
+document.getElementById('A19').innerHTML = 'n°18';
+document.getElementById('A20').innerHTML = 'n°17';
+$('#C1').css('fill', 'FF00B0');
+$('#C2').css('fill', 'C000A0');
+$('#C3').css('fill', 'FF00FF');
+$('#C4').css('fill', 'FF00A0');
+$('#C5').css('fill', 'C00090');
+$('#C6').css('fill', 'FF00D0');
+$('#C7').css('fill', 'C00080');
+$('#C8').css('fill', 'C000B0');
+$('#C9').css('fill', 'FF0065');
+$('#C10').css('fill', 'FF0090');
+$('#C11').css('fill', 'FF0065');
+$('#C12').css('fill', 'FF00C0');
+$('#C13').css('fill', 'C00070');
+$('#C14').css('fill', 'C00070');
+$('#C15').css('fill', 'FF0065');
+$('#C16').css('fill', 'C00090');
+$('#C17').css('fill', 'FF0090');
+$('#C18').css('fill', 'FF00A0');
+$('#C19').css('fill', 'FF00D0');
+$('#C20').css('fill', 'FF00FF');
+break;
+}
+break;
+}
+
+
+
+			
+		}
+	
+	</script>
+
+
+
+	</body>
+</html>
